@@ -1,0 +1,92 @@
+# Edge Device Configuration
+# Simulates smartphones, wearables, and IoT sensors
+
+device:
+  type: "smartphone"  # smartphone, wearable, iot_sensor
+  id: "edge_device_001"
+  location: "home"
+  battery_level: 100
+  processing_power: "medium"  # low, medium, high
+  memory_limit: 4096  # MB
+  storage_limit: 8192  # MB
+
+data_processing:
+  audio:
+    enabled: true
+    sample_rate: 16000
+    chunk_size: 1024
+    features:
+      - mfcc
+      - spectral_centroid
+      - zero_crossing_rate
+      - chroma_features
+    preprocessing:
+      noise_reduction: true
+      normalization: true
+      silence_removal: true
+  
+  gait:
+    enabled: true
+    sensors:
+      - accelerometer
+      - gyroscope
+      - magnetometer
+    sampling_rate: 50  # Hz
+    window_size: 5  # seconds
+    features:
+      - step_frequency
+      - stride_length
+      - walking_speed
+      - balance_metrics
+  
+  facial:
+    enabled: true
+    camera_resolution: [640, 480]
+    fps: 30
+    features:
+      - facial_landmarks
+      - emotion_recognition
+      - eye_tracking
+      - micro_expressions
+    preprocessing:
+      face_detection: true
+      alignment: true
+      illumination_correction: true
+
+federated_learning:
+  local_epochs: 5
+  batch_size: 32
+  learning_rate: 0.001
+  optimizer: "adam"
+  loss_function: "cross_entropy"
+  privacy:
+    differential_privacy: true
+    epsilon: 1.0
+    delta: 1e-5
+    clipping_threshold: 1.0
+
+communication:
+  fog_node_url: "http://fog-node-1:8080"
+  update_interval: 300  # seconds
+  max_retries: 3
+  timeout: 30
+  compression: true
+  encryption: true
+
+security:
+  authentication: true
+  certificate_path: "certs/edge_cert.pem"
+  private_key_path: "certs/edge_key.pem"
+  encryption_algorithm: "AES-256"
+
+logging:
+  level: "INFO"
+  file_path: "logs/edge_device.log"
+  max_file_size: 10  # MB
+  backup_count: 5
+
+performance:
+  max_cpu_usage: 80  # percentage
+  max_memory_usage: 70  # percentage
+  thermal_throttling: true
+  adaptive_processing: true

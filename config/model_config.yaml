@@ -1,0 +1,148 @@
+# Model Configuration
+# Neural network architectures and training parameters
+
+models:
+  speech_model:
+    architecture: "transformer"  # cnn, lstm, transformer, wav2vec2
+    input_dim: 80  # MFCC features
+    hidden_dim: 256
+    num_layers: 6
+    num_heads: 8
+    dropout: 0.1
+    activation: "gelu"
+    pretrained: true
+    freeze_layers: 0
+    
+  gait_model:
+    architecture: "cnn_lstm"  # cnn, lstm, cnn_lstm, transformer
+    input_dim: 9  # 3D accelerometer + 3D gyroscope + 3D magnetometer
+    sequence_length: 250  # 5 seconds at 50Hz
+    cnn_filters: [32, 64, 128]
+    cnn_kernel_size: 3
+    lstm_units: 128
+    lstm_layers: 2
+    dropout: 0.2
+    activation: "relu"
+    
+  facial_model:
+    architecture: "resnet"  # vgg, resnet, efficientnet, vision_transformer
+    input_size: [224, 224, 3]
+    num_classes: 8  # emotions
+    pretrained: true
+    freeze_layers: 10
+    dropout: 0.3
+    activation: "relu"
+    
+  multimodal_fusion:
+    architecture: "attention"  # concatenation, attention, cross_modal
+    fusion_method: "late"  # early, late, hybrid
+    attention_heads: 8
+    hidden_dim: 512
+    dropout: 0.1
+    temperature: 0.07
+
+training:
+  epochs: 10
+  batch_size: 32
+  optimizer:
+    name: "adamw"  # adam, adamw, sgd, rmsprop
+    learning_rate: 0.0001  # Reduced from 0.001 for better convergence
+    weight_decay: 0.01
+    beta1: 0.9
+    beta2: 0.999
+    epsilon: 1e-8
+    
+  scheduler:
+    name: "cosine"  # step, cosine, exponential, plateau
+    step_size: 10
+    gamma: 0.1
+    min_lr: 1e-6
+    
+  loss_function:
+    name: "cross_entropy"  # cross_entropy, focal_loss, label_smoothing
+    label_smoothing: 0.1
+    alpha: 1.0
+    gamma: 2.0
+    
+  regularization:
+    l1_lambda: 0.0
+    l2_lambda: 0.01
+    dropout: 0.1
+    batch_norm: true
+    layer_norm: false
+
+data_augmentation:
+  audio:
+    enabled: true
+    techniques:
+      - time_shift
+      - pitch_shift
+      - noise_injection
+      - speed_change
+    probability: 0.5
+    
+  gait:
+    enabled: true
+    techniques:
+      - time_warping
+      - magnitude_warping
+      - jittering
+      - scaling
+    probability: 0.3
+    
+  facial:
+    enabled: true
+    techniques:
+      - rotation
+      - translation
+      - scaling
+      - brightness_change
+      - contrast_change
+    probability: 0.4
+
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - auc_roc
+    - confusion_matrix
+    
+  cross_validation:
+    enabled: true
+    folds: 5
+    stratified: true
+    
+  test_split:
+    ratio: 0.2
+    stratified: true
+    random_state: 42
+
+hyperparameter_tuning:
+  enabled: true
+  method: "optuna"  # optuna, hyperopt, grid_search
+  n_trials: 100
+  timeout: 3600  # seconds
+  parameters:
+    learning_rate: [1e-5, 1e-2]
+    batch_size: [16, 64]
+    hidden_dim: [128, 512]
+    dropout: [0.1, 0.5]
+
+model_serving:
+  framework: "torchserve"  # torchserve, tensorflow_serving, onnx
+  batch_size: 32
+  max_batch_delay: 100  # ms
+  workers: 4
+  gpu_enabled: true
+  
+  preprocessing:
+    normalization: true
+    feature_extraction: true
+    caching: true
+    
+  postprocessing:
+    confidence_threshold: 0.5
+    top_k: 3
+    softmax: true

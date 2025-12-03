@@ -1,0 +1,171 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Dataset files (large data)
+data/ravdess/Audio_Speech_Actors_*/
+data/ravdess/Video_Speech_Actors_*/
+data/ravdess/Video_Song_Actors_*/
+data/ravdess/*.wav
+data/ravdess/*.mp4
+data/ravdess/*.avi
+data/ravdess/*.mov
+# Keep README files in data directories
+!data/ravdess/README.txt
+!data/*/README.md
+!data/*/README.txt
+
+# Model checkpoints and weights
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.pb
+*.onnx
+*.tflite
+
+# Results directory (models, logs, plots, reports)
+results/
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Note: experiments/ directory is kept (contains experiment scripts)
+# If you want to ignore experiment results/outputs, add:
+# experiments/results/
+# experiments/outputs/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Documentation build
+docs/_build/
+docs/.doctrees/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Review documents (Word files)
+*.docx
+*.doc
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Large files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Temporary Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Profiling data
+*.prof
+
+# Compiled files
+*.class
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# IDE specific
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# Node modules (if any frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Keep empty directories structure
+!data/.gitkeep
+!results/.gitkeep
+

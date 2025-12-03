@@ -1,0 +1,242 @@
+# Simulation configuration for cognitive decline detection system
+
+# Network configurations
+networks:
+  wifi_network_1:
+    type: wifi
+    frequency: 2.4GHz
+    standard: 802.11n
+    signal_strength: -50.0
+    interference_level: 0.1
+  
+  cellular_network_1:
+    type: cellular
+    generation: 4G
+    carrier: LTE
+    signal_strength: -70.0
+    congestion_level: 0.2
+  
+  ethernet_network_1:
+    type: ethernet
+    speed: 1Gbps
+    cable_type: Cat6
+    distance: 100.0
+  
+  fiber_network_1:
+    type: fiber
+    speed: 10Gbps
+    fiber_type: Single-mode
+    distance: 1000.0
+
+# Cloud server configurations
+cloud_servers:
+  global_aggregator_1:
+    type: global_aggregator
+    location: data_center_1
+    capacity: 1000
+    processing_power: ultra_high
+    memory_limit: 262144  # MB
+    storage_limit: 2000000  # MB
+    network_bandwidth: 2000.0  # Mbps
+    latency: 2.0  # ms
+  
+  analytics_server_1:
+    type: analytics_server
+    location: data_center_1
+    capacity: 500
+    processing_power: high
+    memory_limit: 65536  # MB
+    storage_limit: 500000  # MB
+    network_bandwidth: 500.0  # Mbps
+    latency: 10.0  # ms
+
+# Fog node configurations
+fog_nodes:
+  clinic_server_1:
+    type: clinic_server
+    location: clinic_1
+    capacity: 50
+    processing_power: high
+    memory_limit: 32768  # MB
+    storage_limit: 200000  # MB
+    network_bandwidth: 200.0  # Mbps
+    latency: 5.0  # ms
+  
+  clinic_server_2:
+    type: clinic_server
+    location: clinic_2
+    capacity: 50
+    processing_power: high
+    memory_limit: 32768  # MB
+    storage_limit: 200000  # MB
+    network_bandwidth: 200.0  # Mbps
+    latency: 5.0  # ms
+  
+  local_gateway_1:
+    type: local_gateway
+    location: gateway_1
+    capacity: 100
+    processing_power: medium
+    memory_limit: 8192  # MB
+    storage_limit: 50000  # MB
+    network_bandwidth: 50.0  # Mbps
+    latency: 20.0  # ms
+  
+  local_gateway_2:
+    type: local_gateway
+    location: gateway_2
+    capacity: 100
+    processing_power: medium
+    memory_limit: 8192  # MB
+    storage_limit: 50000  # MB
+    network_bandwidth: 50.0  # Mbps
+    latency: 20.0  # ms
+
+# Edge device configurations
+edge_devices:
+  smartphone_1:
+    type: smartphone
+    location: user_location_1
+    battery_level: 100.0
+    processing_power: medium
+    memory_limit: 4096  # MB
+    storage_limit: 128000  # MB
+    network_bandwidth: 50.0  # Mbps
+    latency: 20.0  # ms
+  
+  smartphone_2:
+    type: smartphone
+    location: user_location_2
+    battery_level: 85.0
+    processing_power: medium
+    memory_limit: 4096  # MB
+    storage_limit: 128000  # MB
+    network_bandwidth: 50.0  # Mbps
+    latency: 20.0  # ms
+  
+  smartphone_3:
+    type: smartphone
+    location: user_location_3
+    battery_level: 70.0
+    processing_power: medium
+    memory_limit: 4096  # MB
+    storage_limit: 128000  # MB
+    network_bandwidth: 50.0  # Mbps
+    latency: 20.0  # ms
+  
+  wearable_1:
+    type: wearable
+    location: user_location_1
+    battery_level: 90.0
+    processing_power: low
+    memory_limit: 1024  # MB
+    storage_limit: 8000  # MB
+    network_bandwidth: 10.0  # Mbps
+    latency: 50.0  # ms
+  
+  wearable_2:
+    type: wearable
+    location: user_location_2
+    battery_level: 75.0
+    processing_power: low
+    memory_limit: 1024  # MB
+    storage_limit: 8000  # MB
+    network_bandwidth: 10.0  # Mbps
+    latency: 50.0  # ms
+  
+  wearable_3:
+    type: wearable
+    location: user_location_3
+    battery_level: 60.0
+    processing_power: low
+    memory_limit: 1024  # MB
+    storage_limit: 8000  # MB
+    network_bandwidth: 10.0  # Mbps
+    latency: 50.0  # ms
+
+# Federated learning configuration
+federated_learning:
+  global_model:
+    model_type: multimodal_fusion
+    input_dimensions:
+      speech: 80
+      
+      facial: 128
+    output_dimensions: 8
+    hidden_layers: [256, 128, 64]
+    dropout_rate: 0.3
+    learning_rate: 0.001
+    batch_size: 32
+    epochs: 10
+  
+  aggregation:
+    strategy: FedAvg
+    min_clients: 3
+    max_clients: 50
+    aggregation_interval: 600  # seconds
+    privacy_budget: 1.0
+    noise_scale: 0.1
+  
+  communication:
+    compression: true
+    encryption: true
+    authentication: true
+    timeout: 30.0  # seconds
+    retry_attempts: 3
+
+# Simulation parameters
+simulation:
+  duration: 120.0  # seconds
+  step_interval: 1.0  # seconds
+  monitoring_interval: 10.0  # seconds
+  data_collection_interval: 60.0  # seconds
+  output_directory: results/simulation
+  log_level: INFO
+  
+  # Performance targets
+  performance_targets:
+    max_latency: 100.0  # ms
+    min_throughput: 10.0  # Mbps
+    max_energy_consumption: 1000.0  # J
+    min_privacy_score: 0.8
+    min_model_accuracy: 0.85
+
+# Privacy and security settings
+privacy:
+  differential_privacy:
+    enabled: true
+    epsilon: 1.0
+    delta: 1e-5
+    clip_norm: 1.0
+  
+  secure_aggregation:
+    enabled: true
+    protocol: secure_sum
+    key_size: 256
+  
+  data_anonymization:
+    enabled: true
+    k_anonymity: 5
+    l_diversity: 3
+
+# Evaluation metrics
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - communication_overhead
+    - latency
+    - energy_consumption
+    - privacy_score
+  
+  test_data:
+    split_ratio: 0.2
+    cross_validation: true
+    k_folds: 5
+  
+  reporting:
+    generate_plots: true
+    generate_reports: true
+    export_format: [json, csv, pdf]

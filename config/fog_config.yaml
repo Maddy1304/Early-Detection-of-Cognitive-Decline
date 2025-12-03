@@ -1,0 +1,98 @@
+# Fog Node Configuration
+# Simulates clinic-like servers for local aggregation
+
+fog_node:
+  id: "fog_node_001"
+  location: "clinic_alpha"
+  capacity: 100  # max edge devices
+  processing_power: "high"
+  memory_limit: 16384  # MB
+  storage_limit: 100000  # MB
+
+aggregation:
+  algorithm: "fedavg"  # fedavg, fedprox, scaffold
+  aggregation_interval: 600  # seconds
+  min_clients: 5
+  max_clients: 50
+  aggregation_weights:
+    - "uniform"  # uniform, data_size, performance
+    - "data_size"
+    - "performance"
+  
+  privacy:
+    secure_aggregation: true
+    differential_privacy: true
+    epsilon: 0.5
+    delta: 1e-5
+    noise_multiplier: 1.1
+
+model_management:
+  model_storage: "local"  # local, cloud
+  model_versioning: true
+  backup_frequency: 3600  # seconds
+  compression: true
+  encryption: true
+
+communication:
+  cloud_server_url: "http://cloud-server:9090"
+  edge_devices:
+    - "edge_device_001"
+    - "edge_device_002"
+    - "edge_device_003"
+  update_interval: 1800  # seconds
+  max_retries: 5
+  timeout: 60
+  compression: true
+  encryption: true
+
+security:
+  authentication: true
+  certificate_path: "certs/fog_cert.pem"
+  private_key_path: "certs/fog_key.pem"
+  encryption_algorithm: "AES-256"
+  access_control: true
+  audit_logging: true
+
+monitoring:
+  health_check_interval: 60  # seconds
+  performance_metrics: true
+  resource_monitoring: true
+  alert_thresholds:
+    cpu_usage: 90
+    memory_usage: 85
+    disk_usage: 90
+    network_latency: 1000  # ms
+
+logging:
+  level: "INFO"
+  file_path: "logs/fog_node.log"
+  max_file_size: 50  # MB
+  backup_count: 10
+  remote_logging: true
+
+performance:
+  max_concurrent_connections: 100
+  request_timeout: 30
+  cache_size: 1024  # MB
+  load_balancing: true
+
+data_processing:
+  preprocessing:
+    enabled: true
+    normalization: true
+    feature_selection: true
+    dimensionality_reduction: true
+  
+  validation:
+    enabled: true
+    cross_validation: true
+    holdout_ratio: 0.2
+    stratified_sampling: true
+
+backup:
+  enabled: true
+  frequency: 3600  # seconds
+  retention_days: 30
+  compression: true
+  encryption: true
+  cloud_backup: true
