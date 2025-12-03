@@ -177,11 +177,6 @@ python scripts/run_experiments.py --experiment baseline
 - **Features**: Audio, video, transcriptions, PHQ-8 scores
 - **Download**: Use `python scripts/download_datasets.py --dataset daic_woz`
 
-### mPower (Mobile Parkinson's Disease)
-- **Purpose**: Gait and motor function analysis
-- **Size**: ~9,000 participants
-- **Features**: Accelerometer, gyroscope, touch screen data
-- **Download**: Use `python scripts/download_datasets.py --dataset mpower`
 
 ### RAVDESS (Ryerson Audio-Visual Database)
 - **Purpose**: Emotional speech recognition
