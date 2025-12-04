@@ -272,9 +272,6 @@ This project addresses critical gaps in healthcare AI:
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Contact
-
-For questions and collaboration, please contact [your-email@domain.com]
 
 ## 🙏 Acknowledgments
 
